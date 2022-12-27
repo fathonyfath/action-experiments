@@ -1,0 +1,33 @@
+name: test workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      edition:
+        type: choice
+        description: Default edition
+        required: true
+        default: 'unspecified'
+        options:
+          - unspecified
+          - ja_JP
+          - en_US
+          - en_ALL
+      bump_version:
+        type: boolean
+        description: Bump app version - If you turn it off, we distribute RC app even there are no changes(mainly for passing US-default RC app to QA team).
+        required: true
+        default: 'true'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print something in screen
+        run: |
+          TARGET_BRANCH=${GITHUB_REF#refs/heads/}
+          EDITION=${{ github.event.inputs.edition }}
+          BUMP_VERSION=${{ github.event.inputs.bump_version }}
+          echo "Target branch: ${TARGET_BRANCH}"
+          echo "Edition: ${EDITION}"
+          echo "Bump Version: ${BUMP_VERSION}"
