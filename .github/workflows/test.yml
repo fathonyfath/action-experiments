@@ -28,6 +28,8 @@ jobs:
           TARGET_BRANCH=${GITHUB_REF#refs/heads/}
           EDITION=${{ github.event.inputs.edition }}
           BUMP_VERSION=${{ github.event.inputs.bump_version }}
+          TRIGGERING_ACTOR=${{.github.triggering_actor }}
           echo "Target branch: ${TARGET_BRANCH}"
           echo "Edition: ${EDITION}"
           echo "Bump version: ${BUMP_VERSION}"
+          echo "Triggering actor: ${TRIGGERING_ACTOR}"
