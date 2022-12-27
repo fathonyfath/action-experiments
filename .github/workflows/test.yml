@@ -30,4 +30,4 @@ jobs:
           BUMP_VERSION=${{ github.event.inputs.bump_version }}
           echo "Target branch: ${TARGET_BRANCH}"
           echo "Edition: ${EDITION}"
-          echo "Bump Version: ${BUMP_VERSION}"
+          echo "Bump version: ${BUMP_VERSION}"
